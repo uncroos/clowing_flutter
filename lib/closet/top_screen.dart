@@ -1,5 +1,5 @@
-import 'package:clowing_flutter/custom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:clowing_flutter/custom_bottom_nav_bar.dart';
 
 class TopScreen extends StatelessWidget {
   @override
@@ -16,45 +16,19 @@ class TopScreen extends StatelessWidget {
       body: Row(
         children: [
           // Side navigation menu with text only
-          Column(
-            children: [
-              TextButton(
-                onPressed: () {
-                  // Handle "상의" selection
-                },
-                child: Text('상의', style: TextStyle(color: Colors.black)),
-              ),
-              TextButton(
-                onPressed: () {
-                  // Handle "하의" selection
-                },
-                child: Text('하의', style: TextStyle(color: Colors.black)),
-              ),
-              TextButton(
-                onPressed: () {
-                  // Handle "아우터" selection
-                },
-                child: Text('아우터', style: TextStyle(color: Colors.black)),
-              ),
-              TextButton(
-                onPressed: () {
-                  // Handle "신발" selection
-                },
-                child: Text('신발', style: TextStyle(color: Colors.black)),
-              ),
-              TextButton(
-                onPressed: () {
-                  // Handle "가방" selection
-                },
-                child: Text('가방', style: TextStyle(color: Colors.black)),
-              ),
-              TextButton(
-                onPressed: () {
-                  // Handle "패션소품" selection
-                },
-                child: Text('패션소품', style: TextStyle(color: Colors.black)),
-              ),
-            ],
+          Container(
+            color: Colors.grey[200],
+            width: 100,
+            child: Column(
+              children: [
+                _buildSideMenuItem('상의', true), // true for the selected item
+                _buildSideMenuItem('하의', false),
+                _buildSideMenuItem('아우터', false),
+                _buildSideMenuItem('신발', false),
+                _buildSideMenuItem('가방', false),
+                _buildSideMenuItem('패션소품', false),
+              ],
+            ),
           ),
           VerticalDivider(thickness: 1, width: 1),
           // Main content
@@ -74,6 +48,14 @@ class TopScreen extends StatelessWidget {
                       // Handle add clothing item
                     },
                     child: Text('상의 추가하기'),
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.brown[200],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      minimumSize: Size(double.infinity, 50),
+                    ),
                   ),
                 ),
               ],
@@ -90,14 +72,23 @@ class TopScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildClothingItem(String title, String imagePath) {
-    return Column(
-      children: [
-        Expanded(
-          child: Image.asset(imagePath),
+  Widget _buildSideMenuItem(String title, bool isSelected) {
+    return Container(
+      color: isSelected ? Colors.grey[300] : Colors.grey[200],
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      child: TextButton(
+        onPressed: () {
+          // Handle item selection
+        },
+        child: Text(
+          title,
+          style: TextStyle(
+            color: isSelected ? Colors.black : Colors.grey,
+            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+          ),
         ),
-        Text(title),
-      ],
+      ),
     );
   }
 }
