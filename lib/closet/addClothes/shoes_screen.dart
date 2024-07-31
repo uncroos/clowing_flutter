@@ -101,7 +101,7 @@ class _ShoesScreenState extends State<ShoesScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: ElevatedButton(
                             onPressed: () {},
-                            child: Text('상의 추가하기'),
+                            child: Text('신발 추가하기'),
                             style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.white,
                               backgroundColor: Colors.brown[200],
