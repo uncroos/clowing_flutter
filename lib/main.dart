@@ -1,5 +1,5 @@
 import 'package:clowing_flutter/closet/closet_home_screen.dart';
-import 'package:clowing_flutter/closet/top_screen.dart';
+import 'package:clowing_flutter/closet/addClothes/top_screen.dart';
 import 'package:flutter/material.dart';
 import 'splash_screen.dart';
 // LoginScreen 파일 import

@@ -1,4 +1,8 @@
-import 'package:clowing_flutter/closet/top_screen.dart';
+import 'package:clowing_flutter/closet/addClothes/bag_screen.dart';
+import 'package:clowing_flutter/closet/addClothes/fashion_screen.dart';
+import 'package:clowing_flutter/closet/addClothes/outer_screen.dart';
+import 'package:clowing_flutter/closet/addClothes/shoes_screen.dart';
+import 'package:clowing_flutter/closet/addClothes/top_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:clowing_flutter/custom_bottom_nav_bar.dart';
 
@@ -163,6 +167,30 @@ class _LowScreenState extends State<LowScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => LowScreen()),
+        );
+        break;
+      case '아우터':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => OuterScreen()),
+        );
+        break;
+      case '신발':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ShoesScreen()),
+        );
+        break;
+      case '가방':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => BagScreen()),
+        );
+        break;
+      case '패션 소품':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => FashionScreen()),
         );
         break;
       // Add more cases for other items if needed

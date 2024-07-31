@@ -1,13 +1,17 @@
-import 'package:clowing_flutter/closet/low_screen.dart';
+import 'package:clowing_flutter/closet/addClothes/bag_screen.dart';
+import 'package:clowing_flutter/closet/addClothes/fashion_screen.dart';
+import 'package:clowing_flutter/closet/addClothes/low_screen.dart';
+import 'package:clowing_flutter/closet/addClothes/shoes_screen.dart';
+import 'package:clowing_flutter/closet/addClothes/top_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:clowing_flutter/custom_bottom_nav_bar.dart'; // Import LowScreen
 
-class TopScreen extends StatefulWidget {
+class OuterScreen extends StatefulWidget {
   @override
-  _TopScreenState createState() => _TopScreenState();
+  _OuterScreenState createState() => _OuterScreenState();
 }
 
-class _TopScreenState extends State<TopScreen> {
+class _OuterScreenState extends State<OuterScreen> {
   final TextEditingController _searchController = TextEditingController();
 
   @override
@@ -65,9 +69,9 @@ class _TopScreenState extends State<TopScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildSideMenuItem('상의', true),
+                  _buildSideMenuItem('상의', false),
                   _buildSideMenuItem('하의', false),
-                  _buildSideMenuItem('아우터', false),
+                  _buildSideMenuItem('아우터', true),
                   _buildSideMenuItem('신발', false),
                   _buildSideMenuItem('가방', false),
                   _buildSideMenuItem('패션 소품', false),
@@ -163,6 +167,30 @@ class _TopScreenState extends State<TopScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => LowScreen()),
+        );
+        break;
+      case '아우터':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => OuterScreen()),
+        );
+        break;
+      case '신발':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ShoesScreen()),
+        );
+        break;
+      case '가방':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => BagScreen()),
+        );
+        break;
+      case '패션 소품':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => FashionScreen()),
         );
         break;
       // Add more cases for other items if needed
