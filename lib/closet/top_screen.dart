@@ -18,6 +18,7 @@ class TopScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0), // 원하는 만큼 패딩 조절
             child: Container(
+              height: 50.0, // 원하는 높이로 설정
               decoration: BoxDecoration(
                 color: Color(0xFFF1E5DB), // 검색 바 배경색
                 borderRadius: BorderRadius.circular(8.0), // 모서리 둥글게
@@ -44,26 +45,36 @@ class TopScreen extends StatelessWidget {
               ),
             ),
           ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              width: 90,
+              height: 500, // 필요한 만큼 높이를 늘립니다.
+              padding: EdgeInsets.only(left: 0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildSideMenuItem('상의', true),
+                  _buildSideMenuItem('하의', false),
+                  _buildSideMenuItem('아우터', false),
+                  _buildSideMenuItem('신발', false),
+                  _buildSideMenuItem('가방', false),
+                  _buildSideMenuItem('패션 소품', false),
+                ],
+              ),
+              // 컨테이너의 색상을 지정
+            ),
+          ),
+          SizedBox(
+            height: 50,
+          ),
           Expanded(
             // This Expanded widget will make the content fill the available space.
             child: Row(
               children: [
                 // Side navigation menu with text only
-                Container(
-                  color: Colors.grey[200],
-                  width: 90,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildSideMenuItem('상의', true),
-                      _buildSideMenuItem('하의', false),
-                      _buildSideMenuItem('아우터', false),
-                      _buildSideMenuItem('신발', false),
-                      _buildSideMenuItem('가방', false),
-                      _buildSideMenuItem('패션소품', false),
-                    ],
-                  ),
-                ),
                 VerticalDivider(thickness: 1, width: 1),
                 // Main content
                 Expanded(
@@ -85,6 +96,10 @@ class TopScreen extends StatelessWidget {
                             style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.white,
                               backgroundColor: Colors.brown[200],
+                              textStyle: TextStyle(
+                                  // Apply textStyle here
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 17),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
