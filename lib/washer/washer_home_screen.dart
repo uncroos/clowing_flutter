@@ -1,12 +1,12 @@
 import 'package:clowing_flutter/custom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart'; // Import the custom bottom nav bar widget
 
-class HomeScreen extends StatefulWidget {
+class WasherHomeScreen extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _WasherHomeScreenState createState() => _WasherHomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _WasherHomeScreenState extends State<WasherHomeScreen> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.white, // Set the background color to white
       appBar: AppBar(
-        title: Text('내 옷장', style: TextStyle(color: Colors.black)),
+        title: Text('새탁기', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              'assets/images/closet.png', // Replace with your closet image asset path
+              'assets/images/washer.png', // Replace with your closet image asset path
               width: 300,
               height: 300,
             ),
@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.pushNamed(context, '/top');
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFFA89789), // 박스 색상
+                backgroundColor: Color(0xFF6E8C6F), // 박스 색상
                 padding:
                     EdgeInsets.symmetric(horizontal: 40, vertical: 15), // 내부 패딩
                 textStyle:
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               child: Text(
-                '내 옷장 관리하기',
+                '세탁 관리하기',
                 style: TextStyle(color: Colors.white),
               ),
             ),

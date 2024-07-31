@@ -1,3 +1,5 @@
+import 'package:clowing_flutter/closet/closet_home_screen.dart';
+import 'package:clowing_flutter/washer/washer_home_screen.dart'; // Import the WasherHomeScreen
 import 'package:flutter/material.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
@@ -12,6 +14,22 @@ class CustomBottomNavBar extends StatefulWidget {
 }
 
 class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
+  void _handleTap(int index) {
+    if (index == 0) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+      );
+    } else if (index == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => WasherHomeScreen()),
+      );
+    } else {
+      widget.onTap(index);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,7 +62,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         currentIndex: widget.currentIndex,
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.grey,
-        onTap: widget.onTap,
+        onTap: _handleTap,
         backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
       ),

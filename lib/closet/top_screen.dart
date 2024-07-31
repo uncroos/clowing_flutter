@@ -10,51 +10,89 @@ class TopScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
-        automaticallyImplyLeading: false, // 뒤로 가기 버튼 삭제
+        automaticallyImplyLeading: false,
       ),
-      backgroundColor: Colors.white, // Scaffold의 배경색을 흰색으로 설정
-      body: Row(
+      backgroundColor: Colors.white,
+      body: Column(
         children: [
-          // Side navigation menu with text only
-          Container(
-            color: Colors.grey[200],
-            width: 100,
-            child: Column(
-              children: [
-                _buildSideMenuItem('상의', true), // true for the selected item
-                _buildSideMenuItem('하의', false),
-                _buildSideMenuItem('아우터', false),
-                _buildSideMenuItem('신발', false),
-                _buildSideMenuItem('가방', false),
-                _buildSideMenuItem('패션소품', false),
-              ],
+          Padding(
+            padding: const EdgeInsets.all(8.0), // 원하는 만큼 패딩 조절
+            child: Container(
+              decoration: BoxDecoration(
+                color: Color(0xFFF1E5DB), // 검색 바 배경색
+                borderRadius: BorderRadius.circular(8.0), // 모서리 둥글게
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Text(
+                          '내 옷장',
+                          style: TextStyle(color: Colors.black45),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Icon(Icons.search, color: Colors.grey),
+                  ),
+                ],
+              ),
             ),
           ),
-          VerticalDivider(thickness: 1, width: 1),
-          // Main content
           Expanded(
-            child: Column(
+            // This Expanded widget will make the content fill the available space.
+            child: Row(
               children: [
-                Expanded(
-                  child: GridView.count(
-                    crossAxisCount: 2,
-                    children: [],
+                // Side navigation menu with text only
+                Container(
+                  color: Colors.grey[200],
+                  width: 90,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildSideMenuItem('상의', true),
+                      _buildSideMenuItem('하의', false),
+                      _buildSideMenuItem('아우터', false),
+                      _buildSideMenuItem('신발', false),
+                      _buildSideMenuItem('가방', false),
+                      _buildSideMenuItem('패션소품', false),
+                    ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Handle add clothing item
-                    },
-                    child: Text('상의 추가하기'),
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.brown[200],
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      minimumSize: Size(double.infinity, 50),
+                VerticalDivider(thickness: 1, width: 1),
+                // Main content
+                Expanded(
+                  child: Container(
+                    color: Colors.white,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: GridView.count(
+                            crossAxisCount: 2,
+                            children: [], // Your grid items here
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: Text('상의 추가하기'),
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor: Colors.brown[200],
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              minimumSize: Size(double.infinity, 50),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -64,7 +102,7 @@ class TopScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: CustomBottomNavBar(
-        currentIndex: 0, // Adjust according to the tab index
+        currentIndex: 0,
         onTap: (index) {
           // Handle bottom navigation bar tap
         },
@@ -74,18 +112,21 @@ class TopScreen extends StatelessWidget {
 
   Widget _buildSideMenuItem(String title, bool isSelected) {
     return Container(
-      color: isSelected ? Colors.grey[300] : Colors.grey[200],
+      color: isSelected ? const Color(0xFFEBEBEB) : Colors.white,
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
-      child: TextButton(
-        onPressed: () {
-          // Handle item selection
-        },
-        child: Text(
-          title,
-          style: TextStyle(
-            color: isSelected ? Colors.black : Colors.grey,
-            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: TextButton(
+          onPressed: () {
+            // Handle item selection
+          },
+          child: Text(
+            title,
+            style: TextStyle(
+              color: isSelected ? Colors.black : const Color(0xFF787878),
+              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+            ),
           ),
         ),
       ),
