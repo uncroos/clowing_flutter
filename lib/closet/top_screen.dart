@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:clowing_flutter/custom_bottom_nav_bar.dart';
 
-class TopScreen extends StatelessWidget {
+class TopScreen extends StatefulWidget {
+  @override
+  _TopScreenState createState() => _TopScreenState();
+}
+
+class _TopScreenState extends State<TopScreen> {
+  final TextEditingController _searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('내 옷장', style: TextStyle(color: Colors.black)),
+        title: const Text('내 옷장', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
@@ -20,24 +27,25 @@ class TopScreen extends StatelessWidget {
             child: Container(
               height: 50.0, // 원하는 높이로 설정
               decoration: BoxDecoration(
-                color: Color(0xFFF1E5DB), // 검색 바 배경색
+                color: const Color(0xFFF1E5DB), // 검색 바 배경색
                 borderRadius: BorderRadius.circular(8.0), // 모서리 둥글게
               ),
               child: Row(
                 children: [
                   Expanded(
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Text(
-                          '내 옷장',
-                          style: TextStyle(color: Colors.black45),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: TextField(
+                        controller: _searchController,
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          hintText: '검색어 입력',
+                          hintStyle: TextStyle(color: Colors.black45),
                         ),
                       ),
                     ),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.0),
                     child: Icon(Icons.search, color: Colors.grey),
                   ),
@@ -50,7 +58,7 @@ class TopScreen extends StatelessWidget {
             child: Container(
               width: 90,
               height: 500, // 필요한 만큼 높이를 늘립니다.
-              padding: EdgeInsets.only(left: 0),
+              padding: const EdgeInsets.only(left: 0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -67,7 +75,7 @@ class TopScreen extends StatelessWidget {
               // 컨테이너의 색상을 지정
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           Expanded(
