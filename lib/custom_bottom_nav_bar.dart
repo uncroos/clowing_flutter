@@ -1,5 +1,5 @@
-import 'package:clowing_flutter/closet/closet_home_screen.dart';
-import 'package:clowing_flutter/washer/washer_home_screen.dart'; // Import the WasherHomeScreen
+import 'package:clowing_flutter/screen/closetscreen/closet_home_screen.dart';
+import 'package:clowing_flutter/screen/washerscree/washer_home_screen.dart'; // Import the WasherHomeScreen
 import 'package:flutter/material.dart';
 
 class CustomBottomNavBar extends StatefulWidget {

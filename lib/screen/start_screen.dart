@@ -1,4 +1,4 @@
-import 'package:clowing_flutter/closet/closet_home_screen.dart';
+import 'package:clowing_flutter/screen/informationscreen/sex_information_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk_talk.dart';
@@ -134,7 +134,7 @@ class _StartScreenState extends State<StartScreen> {
   // kakao로 로그인 완료면 화면 이동
   void navigateToMainPage() {
     Navigator.of(context).pushReplacement(MaterialPageRoute(
-      builder: (context) => HomeScreen(),
+      builder: (context) => SexInfoScreen(),
     ));
     // MaterialPageRoute
   }

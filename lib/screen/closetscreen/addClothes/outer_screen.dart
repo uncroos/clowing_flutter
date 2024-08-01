@@ -1,17 +1,17 @@
-import 'package:clowing_flutter/closet/addClothes/fashion_screen.dart';
-import 'package:clowing_flutter/closet/addClothes/low_screen.dart';
-import 'package:clowing_flutter/closet/addClothes/outer_screen.dart';
-import 'package:clowing_flutter/closet/addClothes/shoes_screen.dart';
-import 'package:clowing_flutter/closet/addClothes/top_screen.dart';
+import 'package:clowing_flutter/screen/closetscreen/addClothes/bag_screen.dart';
+import 'package:clowing_flutter/screen/closetscreen/addClothes/fashion_screen.dart';
+import 'package:clowing_flutter/screen/closetscreen/addClothes/low_screen.dart';
+import 'package:clowing_flutter/screen/closetscreen/addClothes/shoes_screen.dart';
+import 'package:clowing_flutter/screen/closetscreen/addClothes/top_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:clowing_flutter/custom_bottom_nav_bar.dart'; // Import LowScreen
 
-class BagScreen extends StatefulWidget {
+class OuterScreen extends StatefulWidget {
   @override
-  _BagScreenState createState() => _BagScreenState();
+  _OuterScreenState createState() => _OuterScreenState();
 }
 
-class _BagScreenState extends State<BagScreen> {
+class _OuterScreenState extends State<OuterScreen> {
   final TextEditingController _searchController = TextEditingController();
 
   @override
@@ -71,9 +71,9 @@ class _BagScreenState extends State<BagScreen> {
                 children: [
                   _buildSideMenuItem('상의', false),
                   _buildSideMenuItem('하의', false),
-                  _buildSideMenuItem('아우터', false),
+                  _buildSideMenuItem('아우터', true),
                   _buildSideMenuItem('신발', false),
-                  _buildSideMenuItem('가방', true),
+                  _buildSideMenuItem('가방', false),
                   _buildSideMenuItem('패션 소품', false),
                 ],
               ),
@@ -101,7 +101,7 @@ class _BagScreenState extends State<BagScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: ElevatedButton(
                             onPressed: () {},
-                            child: Text('가방 추가하기'),
+                            child: Text('아우터 추가하기'),
                             style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.white,
                               backgroundColor: Colors.brown[200],

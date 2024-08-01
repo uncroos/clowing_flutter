@@ -1,26 +1,8 @@
 plugins {
     id "com.android.application"
+    id 'com.google.gms.google-services'  // Firebase 플러그인
     id "kotlin-android"
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
-}
-
-def localProperties = new Properties()
-def localPropertiesFile = rootProject.file("local.properties")
-if (localPropertiesFile.exists()) {
-    localPropertiesFile.withReader("UTF-8") { reader ->
-        localProperties.load(reader)
-    }
-}
-
-def flutterVersionCode = localProperties.getProperty("flutter.versionCode")
-if (flutterVersionCode == null) {
-    flutterVersionCode = "1"
-}
-
-def flutterVersionName = localProperties.getProperty("flutter.versionName")
-if (flutterVersionName == null) {
-    flutterVersionName = "1.0"
 }
 
 android {
@@ -34,10 +16,7 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.clowing_flutter"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdk = flutter.minSdkVersion 23
         targetSdk = flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
@@ -46,11 +25,26 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.debug
         }
     }
+}
+
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:32.0.0') // Firebase BOM 설정
+
+    // Firebase SDKs
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-firestore' // Firestore (옵션)
+    implementation 'com.google.firebase:firebase-messaging' // FCM (옵션)
+    
+    // Kakao SDK (예시, 실제 버전은 확인 후 사용)
+    implementation 'com.kakao.sdk:v2-user:2.5.0'
+
+    // 기타 종속성
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 flutter {

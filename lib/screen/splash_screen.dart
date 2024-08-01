@@ -1,4 +1,4 @@
-import 'package:clowing_flutter/start.dart';
+import 'package:clowing_flutter/screen/start_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 

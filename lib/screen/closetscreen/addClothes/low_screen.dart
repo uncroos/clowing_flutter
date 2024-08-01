@@ -1,17 +1,17 @@
-import 'package:clowing_flutter/closet/addClothes/bag_screen.dart';
-import 'package:clowing_flutter/closet/addClothes/fashion_screen.dart';
-import 'package:clowing_flutter/closet/addClothes/low_screen.dart';
-import 'package:clowing_flutter/closet/addClothes/outer_screen.dart';
-import 'package:clowing_flutter/closet/addClothes/shoes_screen.dart';
+import 'package:clowing_flutter/screen/closetscreen/addClothes/bag_screen.dart';
+import 'package:clowing_flutter/screen/closetscreen/addClothes/fashion_screen.dart';
+import 'package:clowing_flutter/screen/closetscreen/addClothes/outer_screen.dart';
+import 'package:clowing_flutter/screen/closetscreen/addClothes/shoes_screen.dart';
+import 'package:clowing_flutter/screen/closetscreen/addClothes/top_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:clowing_flutter/custom_bottom_nav_bar.dart'; // Import LowScreen
+import 'package:clowing_flutter/custom_bottom_nav_bar.dart';
 
-class TopScreen extends StatefulWidget {
+class LowScreen extends StatefulWidget {
   @override
-  _TopScreenState createState() => _TopScreenState();
+  _LowScreenState createState() => _LowScreenState();
 }
 
-class _TopScreenState extends State<TopScreen> {
+class _LowScreenState extends State<LowScreen> {
   final TextEditingController _searchController = TextEditingController();
 
   @override
@@ -69,8 +69,8 @@ class _TopScreenState extends State<TopScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildSideMenuItem('상의', true),
-                  _buildSideMenuItem('하의', false),
+                  _buildSideMenuItem('상의', false),
+                  _buildSideMenuItem('하의', true),
                   _buildSideMenuItem('아우터', false),
                   _buildSideMenuItem('신발', false),
                   _buildSideMenuItem('가방', false),
@@ -101,7 +101,7 @@ class _TopScreenState extends State<TopScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: ElevatedButton(
                             onPressed: () {},
-                            child: Text('상의 추가하기'),
+                            child: Text('하의 추가하기'),
                             style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.white,
                               backgroundColor: Colors.brown[200],
