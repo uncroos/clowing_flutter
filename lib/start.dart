@@ -1,3 +1,4 @@
+import 'package:clowing_flutter/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk_talk.dart';
@@ -23,8 +24,7 @@ class _StartScreenState extends State<StartScreen> {
               'assets/images/start.png', // Replace with your logo image asset path
               width: 250,
               height: 250,
-            ),
-            SizedBox(height: 10), // Smaller space between image and text
+            ), // Smaller space between image and text
             Text(
               '간편히 관리하는 나의 옷장',
               style: TextStyle(
@@ -32,6 +32,8 @@ class _StartScreenState extends State<StartScreen> {
                 color: Color(0xFF565656),
               ),
             ),
+            Spacer(flex: 1),
+            getkakaoLoginButton(),
             Spacer(flex: 2), // Flexible space in between
           ],
         ),
@@ -53,26 +55,49 @@ class _StartScreenState extends State<StartScreen> {
         child: Container(
           height: 50,
           decoration: BoxDecoration(
-            color: Colors.blueAccent,
+            color: Color(0xFFFFE812),
             borderRadius: BorderRadius.circular(7),
-          ), // BoxDecoration
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Image.asset('', height: 30),
-            const SizedBox(
-              width: 10,
-            ), // SizedBox
-            const Text("Sign In With Kakao",
-                style: TextStyle(color: Colors.white, fontSize: 17)) // Text
-          ]), // Row
-        ), // Container
-      ), // Card
-    ); // InkWell
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(width: 10),
+              Image.asset(
+                'assets/images/chat.png',
+                height: 24, // 원하는 높이로 설정
+                width: 24, // 원하는 너비로 설정
+              ),
+              const SizedBox(width: 10),
+              const Text(
+                "카카오로 1초만에 시작하기",
+                style: TextStyle(
+                    color: Color.fromARGB(255, 0, 0, 0), fontSize: 17),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
+  //kakao 로그아웃
+  Future<void> logout() async {
+    try {
+      await UserApi.instance.logout();
+      print('로그아웃 성공, SDK에서 토큰 삭제');
+    } catch (error) {
+      print('로그아웃 실패, SDK에서 토큰 삭제 $error');
+    }
+  }
+
+  //kakao 로그인 로직
   Future<void> singInWihtKakao() async {
     if (await isKakaoTalkInstalled()) {
       try {
-        await UserApi.instance.loginWithKakaoTalk();
+        await UserApi.instance.loginWithKakaoTalk().then((Value) {
+          print('value from kakao $Value');
+          navigateToMainPage();
+        });
         print('카카오톡으로 로그인 성공');
       } catch (error) {
         print('카카오톡으로 로그인 실패 $error');
@@ -98,5 +123,13 @@ class _StartScreenState extends State<StartScreen> {
         print('카카오계정으로 로그인 실패 $error');
       }
     }
+  }
+
+  // kakao로 로그인 완료면 화면 이동
+  void navigateToMainPage() {
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+      builder: (context) => MyApp(),
+    ));
+    // MaterialPageRoute
   }
 }
