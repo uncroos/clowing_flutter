@@ -1,6 +1,6 @@
+import 'package:clowing_flutter/start.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'closet/closet_home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -13,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => StartScreen()),
       );
     });
   }
