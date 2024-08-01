@@ -1,4 +1,4 @@
-import 'package:clowing_flutter/main.dart';
+import 'package:clowing_flutter/closet/closet_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk_talk.dart';
@@ -120,7 +120,10 @@ class _StartScreenState extends State<StartScreen> {
       }
     } else {
       try {
-        await UserApi.instance.loginWithKakaoAccount();
+        await UserApi.instance.loginWithKakaoAccount().then((Value) {
+          print('value from kakao $Value');
+          navigateToMainPage();
+        });
         print('카카오계정으로 로그인 성공');
       } catch (error) {
         print('카카오계정으로 로그인 실패 $error');
@@ -131,7 +134,7 @@ class _StartScreenState extends State<StartScreen> {
   // kakao로 로그인 완료면 화면 이동
   void navigateToMainPage() {
     Navigator.of(context).pushReplacement(MaterialPageRoute(
-      builder: (context) => MyApp(),
+      builder: (context) => HomeScreen(),
     ));
     // MaterialPageRoute
   }
