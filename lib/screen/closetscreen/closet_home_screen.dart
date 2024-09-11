@@ -1,12 +1,12 @@
 import 'package:clowing_flutter/custom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart'; // Import the custom bottom nav bar widget
 
-class HomeScreen extends StatefulWidget {
+class ClosetMainScreen extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _ClosetMainScreenState createState() => _ClosetMainScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _ClosetMainScreenState extends State<ClosetMainScreen> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
